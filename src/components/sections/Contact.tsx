@@ -26,9 +26,10 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    console.log("Sending form:", form);
 
     try {
-      const res = await fetch("http://localhost:5000/contact", {
+      const res = await fetch("https://portfolio-fullstack-acc2.onrender.com/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,12 +41,14 @@ const Contact = () => {
         }),
       });
 
-      if (res.ok) {
-        alert("Message sent successfully!");
-        setForm(INITIAL_STATE);
-      } else {
-        alert("Something went wrong.");
-      }
+      const data = await res.json();
+
+if (res.ok) {
+  alert(data.message);
+  setForm(INITIAL_STATE);
+} else {
+  alert(data.error || "Something went wrong.");
+}
     } catch (error) {
       console.error(error);
       alert("Server error.");
@@ -89,9 +92,10 @@ const Contact = () => {
           })}
 
           <button
-            type="submit"
-            className="bg-tertiary shadow-primary w-fit rounded-xl px-8 py-3 font-bold text-white shadow-md outline-none"
-          >
+  type="submit"
+  disabled={loading}
+  className="bg-tertiary shadow-primary w-fit rounded-xl px-8 py-3 font-bold text-white shadow-md outline-none"
+>
             {loading ? "Sending..." : "Send"}
           </button>
         </form>
