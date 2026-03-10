@@ -1,3 +1,9 @@
+const jwt = require("jsonwebtoken");
+
+const ADMIN_EMAIL = "abhinavkumartk48@gmail.com";
+const ADMIN_PASSWORD = "@Abhinav8888";
+
+const SECRET_KEY = "mysecretkey";
 const express = require("express");
 const cors = require("cors");
 const pool = require("./db");

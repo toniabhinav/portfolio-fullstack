@@ -26,29 +26,31 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    console.log("Sending form:", form);
 
     try {
-      const res = await fetch("https://portfolio-fullstack-acc2.onrender.com/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          message: form.message,
-        }),
-      });
+      const res = await fetch(
+        "https://portfolio-fullstack-acc2.onrender.com/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            message: form.message,
+          }),
+        }
+      );
 
       const data = await res.json();
 
-if (res.ok) {
-  alert(data.message);
-  setForm(INITIAL_STATE);
-} else {
-  alert(data.error || "Something went wrong.");
-}
+      if (res.ok) {
+        alert(data.message || "Message saved successfully");
+        setForm(INITIAL_STATE);
+      } else {
+        alert(data.error || "Something went wrong.");
+      }
     } catch (error) {
       console.error(error);
       alert("Server error.");
@@ -72,12 +74,16 @@ if (res.ok) {
         >
           {Object.keys(config.contact.form).map((input) => {
             const { span, placeholder } =
-              config.contact.form[input as keyof typeof config.contact.form];
+              config.contact.form[
+                input as keyof typeof config.contact.form
+              ];
+
             const Component = input === "message" ? "textarea" : "input";
 
             return (
               <label key={input} className="flex flex-col">
                 <span className="mb-4 font-medium text-white">{span}</span>
+
                 <Component
                   type={input === "email" ? "email" : "text"}
                   name={input}
@@ -92,10 +98,10 @@ if (res.ok) {
           })}
 
           <button
-  type="submit"
-  disabled={loading}
-  className="bg-tertiary shadow-primary w-fit rounded-xl px-8 py-3 font-bold text-white shadow-md outline-none"
->
+            type="submit"
+            disabled={loading}
+            className="bg-tertiary shadow-primary w-fit rounded-xl px-8 py-3 font-bold text-white shadow-md outline-none"
+          >
             {loading ? "Sending..." : "Send"}
           </button>
         </form>
