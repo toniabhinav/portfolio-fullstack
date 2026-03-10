@@ -1,4 +1,3 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 
 import {
@@ -13,13 +12,14 @@ import {
   StarsCanvas,
 } from "./components";
 
-import AdminLogin from "./pages/AdminLogin.tsx";
-import AdminMessages from "./pages/AdminMessages.tsx";
-
 import { useEffect } from "react";
 import { config } from "./constants/config";
 
-const Home = () => {
+const App = () => {
+  useEffect(() => {
+    document.title = config.html.title;
+  }, []);
+
   return (
     <div className="bg-primary relative z-0">
       <div className="bg-hero-pattern bg-cover bg-center bg-no-repeat">
@@ -40,22 +40,6 @@ const Home = () => {
 
       <Footer />
     </div>
-  );
-};
-
-const App = () => {
-  useEffect(() => {
-    document.title = config.html.title;
-  }, []);
-
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/messages" element={<AdminMessages />} />
-      </Routes>
-    </BrowserRouter>
   );
 };
 

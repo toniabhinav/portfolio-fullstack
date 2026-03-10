@@ -26,7 +26,7 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
         tiltMaxAngleY={30}
         glareColor="#aaa6c3"
       >
-        <div className="bg-tertiary w-full rounded-2xl p-5 sm:w-[300px]">
+        <div className="bg-tertiary w-full rounded-2xl p-5">
           <div className="relative h-[230px] w-full">
             <img
               src={image}
@@ -50,7 +50,7 @@ const ProjectCard: React.FC<{ index: number } & TProject> = ({
             <h3 className="text-[24px] font-bold text-white">{name}</h3>
             <p className="text-secondary mt-2 text-[14px]">{description}</p>
           </div>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="mt-20 grid grid-cols-4 gap-7">
             {tags.map((tag) => (
               <p key={tag.name} className={`text-[14px] ${tag.color}`}>
                 #{tag.name}
@@ -77,7 +77,7 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className="mt-20 flex flex-wrap gap-7">
+      <div className="mt-20 grid grid-cols-4 gap-7">
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}

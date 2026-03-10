@@ -1,9 +1,3 @@
-const jwt = require("jsonwebtoken");
-
-const ADMIN_EMAIL = "abhinavkumartk48@gmail.com";
-const ADMIN_PASSWORD = "@Abhinav8888";
-
-const SECRET_KEY = "mysecretkey";
 const express = require("express");
 const cors = require("cors");
 const pool = require("./db");
@@ -33,13 +27,19 @@ app.post("/contact", async (req, res) => {
 });
 
 
-// VIEW CONTACTS (optional but useful)
+// VIEW CONTACTS
 app.get("/contacts", async (req, res) => {
+  try {
+    const result = await pool.query(
+      "SELECT * FROM contacts ORDER BY id DESC"
+    );
 
-  const result = await pool.query("SELECT * FROM contacts ORDER BY id DESC");
+    res.json(result.rows);
 
-  res.json(result.rows);
-
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Database error" });
+  }
 });
 
 

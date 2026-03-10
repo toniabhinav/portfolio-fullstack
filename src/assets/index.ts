@@ -30,6 +30,7 @@ import powerbi from "./tech/powerbi.png";
 import postgresql from "./tech/postgresql.svg";
 import excel from "./tech/excel.png";
 import deloitte from "./deloitte.jpg";
+import blinkit from "./blinkit.png";
 export {
   logo,
   backend,
@@ -61,5 +62,6 @@ export {
   powerbi,
   postgresql,
   excel,
-  deloitte
+  deloitte,
+  blinkit,
 };
