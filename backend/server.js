@@ -3,7 +3,7 @@ const express = require("express");
 const { Resend } = require('resend');
 const cors = require("cors");
 const pool = require("./db");
-
+const { sendEmail } = require("./sendEmail");
 const app = express();
 
 app.use(cors());
@@ -26,7 +26,7 @@ app.post("/contact", async (req, res) => {
     // 2. Send Email Notification
     await resend.emails.send({
       from: 'onboarding@resend.dev', // Leave this exact testing address
-      to: 'abhinavkumartk48gmail.com',    // <-- CHANGE THIS TO YOUR ACTUAL EMAIL
+      to: 'abhinavkumartk48@gmail.com',    // <-- CHANGE THIS TO YOUR ACTUAL EMAIL
       subject: `New Portfolio Message from ${name}`,
       html: `
         <h3>New message from your portfolio:</h3>
