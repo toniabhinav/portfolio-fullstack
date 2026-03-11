@@ -24,17 +24,7 @@ app.post("/contact", async (req, res) => {
     );
 
     // 2. Send Email Notification
-    await resend.emails.send({
-      from: 'onboarding@resend.dev', // Leave this exact testing address
-      to: 'abhinavkumartk48@gmail.com',    // <-- CHANGE THIS TO YOUR ACTUAL EMAIL
-      subject: `New Portfolio Message from ${name}`,
-      html: `
-        <h3>New message from your portfolio:</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong><br/> ${message}</p>
-      `
-    });
+    await sendEmail(name, email, message);
 
     res.json({ message: "Message saved and email sent successfully" });
 
