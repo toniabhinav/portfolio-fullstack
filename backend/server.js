@@ -3,7 +3,7 @@ const express = require("express");
 const { Resend } = require('resend');
 const cors = require("cors");
 const pool = require("./db");
-const { sendEmail } = require("./sendEmail");
+const { sendEmail } = require("./utils/sendEmail");
 const app = express();
 
 app.use(cors());
