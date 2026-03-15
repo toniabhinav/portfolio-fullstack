@@ -31,7 +31,8 @@ import {
   postgresql,
   excel,
   deloitte,
-  blinkit
+  blinkit,
+  aianalyst
 } from "../assets";
 
 export const navLinks: TNavLink[] = [
@@ -128,6 +129,20 @@ tags: [
 image: blinkit,
 sourceCodeLink:
 "https://github.com/toniabhinav/Blinkit-Grocery-Sales-Analytics-Dashboard-Power-BI-",
+},
+
+{
+  name: "AI Data Analyst Agent",
+  description:
+    "An intelligent SaaS-style analytics dashboard that parses real datasets, generates automated insights, and visualizes trends through interactive micro-analytics widgets and AI reasoning panels.",
+  tags: [
+    { name: "react", color: "blue-text-gradient" },
+    { name: "typescript", color: "green-text-gradient" },
+    { name: "data-analytics", color: "pink-text-gradient" },
+    { name: "ai-dashboard", color: "orange-text-gradient" }
+  ],
+  image: aianalyst,
+  sourceCodeLink: "https://github.com/toniabhinav/AI-Data-Analyst-Agent"
 },
 
 {

@@ -31,6 +31,7 @@ import postgresql from "./tech/postgresql.svg";
 import excel from "./tech/excel.png";
 import deloitte from "./deloitte.jpg";
 import blinkit from "./blinkit.png";
+import aianalyst from "./aianalyst.png";
 export {
   logo,
   backend,
@@ -64,4 +65,5 @@ export {
   excel,
   deloitte,
   blinkit,
+  aianalyst
 };
