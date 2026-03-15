@@ -47,8 +47,7 @@ export const config: TConfig = {
 hero: {
   name: "Abhinav Kumar",
   p: [
-    "AI & Data Application Developer",
-    "Full Stack | Data Analytics | Machine Learning "
+    "AI & Data Application Developer"
   ],
 },
   contact: {
